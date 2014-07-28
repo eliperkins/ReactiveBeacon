@@ -38,7 +38,7 @@
             reduceEach:^(CLLocationManager *manager, NSArray *beacons, CLBeaconRegion *region) {
                 return beacons;
             }]
-            setNameWithFormat:@"s-beaconsInRange"];
+            setNameWithFormat:@"-beaconsInRange"];
     }
     return self;
 }
