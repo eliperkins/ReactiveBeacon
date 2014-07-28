@@ -18,6 +18,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2D561F351986F135004E1279 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
 		2DCF9D4C1986EC9000606D17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
@@ -70,6 +77,7 @@
 		2DCF9D4B1986EC9000606D17 /* ReactiveBeaconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBeaconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCF9D501986EC9000606D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBeaconTests.m; sourceTree = "<group>"; };
+		2DEC129C1986F2BF00D69D3B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		B855A9E3EE644896B5A1B3F1 /* libPods-ReactiveBeacon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveBeacon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF5A20779F1B4BF08604E48E /* libPods-ReactiveBeaconTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveBeaconTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +158,7 @@
 		2DCF9D4F1986EC9000606D17 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2DEC129C1986F2BF00D69D3B /* UnitTests-Prefix.pch */,
 				2DCF9D501986EC9000606D17 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -204,6 +213,7 @@
 				2DCF9D5E1986ED0300606D17 /* PBXTargetDependency */,
 				2DCF9D601986ED0700606D17 /* PBXTargetDependency */,
 				2DCF9D621986ED0C00606D17 /* PBXTargetDependency */,
+				2D561F361986F135004E1279 /* PBXTargetDependency */,
 			);
 			name = ReactiveBeaconTests;
 			productName = ReactiveBeaconTests;
@@ -221,6 +231,7 @@
 				TargetAttributes = {
 					2DCF9D341986EC9000606D17 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z5S2233RU5;
 					};
 					2DCF9D4A1986EC9000606D17 = {
 						CreatedOnToolsVersion = 6.0;
@@ -351,6 +362,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2D561F361986F135004E1279 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2D561F351986F135004E1279 /* PBXContainerItemProxy */;
+		};
 		2DCF9D4D1986EC9000606D17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
@@ -474,6 +490,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ReactiveBeacon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -486,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ReactiveBeacon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,6 +519,8 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBeaconTests/UnitTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -521,6 +541,8 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBeaconTests/UnitTests-Prefix.pch";
 				INFOPLIST_FILE = ReactiveBeaconTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
