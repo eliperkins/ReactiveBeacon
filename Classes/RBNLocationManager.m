@@ -29,38 +29,94 @@
         self.region.notifyOnExit = YES;
         self.region.notifyEntryStateOnDisplay = YES;
         [self.locationManager startMonitoringForRegion:self.region];
+        [self.locationManager startRangingBeaconsInRegion:self.region];
+        [self.locationManager startUpdatingLocation];
+        
+        _beaconsInRange = [[[self
+            rac_signalForSelector:@selector(locationManager:didRangeBeacons:inRegion:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            reduceEach:^(CLLocationManager *manager, NSArray *beacons, CLBeaconRegion *region) {
+                return beacons;
+            }]
+            setNameWithFormat:@"s-beaconsInRange"];
     }
     return self;
 }
 
-- (RACSignal *)fetchState {
-    return [RACSignal defer:^{
-        [self.locationManager requestStateForRegion:self.region];
-        return [[[self rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:) fromProtocol:@protocol(CLLocationManagerDelegate)]
-                reduceEach:^(CLLocationManager *manager, CLRegionState state, CLRegion *region){
-                    return @(state);
-                }]
-                take:1];
+- (RACSignal *)presenceForRegion:(CLBeaconRegion *)region {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        RACSignal *entranceSignal = [[[[self
+            rac_signalForSelector:@selector(locationManager:didEnterRegion:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            reduceEach:^(CLLocationManager *manager, CLRegion *region){
+                return region;
+            }]
+            filter:^BOOL(CLRegion *enteredRegion) {
+                return [enteredRegion isEqual:region];
+            }]
+            mapReplace:@YES];
+        
+        RACSignal *exitSignal = [[[[self
+            rac_signalForSelector:@selector(locationManager:didExitRegion:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            reduceEach:^(CLLocationManager *manager, CLRegion *region){
+                return region;
+            }]
+            filter:^BOOL(CLRegion *exitedRegion) {
+                return [exitedRegion isEqual:region];
+            }]
+            mapReplace:@NO];
+        
+        // Currently, iOS will not send the initial state for a region
+        // immediately via didEnterRegion or didExitRegion
+        // But, explicitly requesting it will get the initial state
+        RACSignal *currentSignal = [self fetchPresenceForRegion:region];
+        
+        RACDisposable *disposable = [[RACSignal
+            merge:@[ currentSignal, entranceSignal, exitSignal ]]
+            subscribe:subscriber];
+
+        // Lift errors out of the delegate callback
+        RACDisposable *failedDisposable = [[[self
+            rac_signalForSelector:@selector(locationManager:monitoringDidFailForRegion:withError:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            filter:^BOOL(RACTuple *tuple) {
+                return [tuple.second isEqual:region];
+            }]
+            subscribeNext:^(RACTuple *tuple) {
+                [subscriber sendError:tuple.third];
+            }];
+        
+        [self.locationManager startMonitoringForRegion:region];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [disposable dispose];
+            [failedDisposable dispose];
+            [self.locationManager stopMonitoringForRegion:region];
+        }];
     }];
 }
 
-- (RACSignal *)regionSignal {
-    return [RACSignal defer:^{
-        [self.locationManager startMonitoringForRegion:self.region];
-        return [[self rac_signalForSelector:@selector(locationManager:didEnterRegion:) fromProtocol:@protocol(CLLocationManagerDelegate)]
-                reduceEach:^(CLLocationManager *manager, CLRegion *region){
-                    return region;
-                }];
-    }];
-}
+- (RACSignal *)fetchPresenceForRegion:(CLBeaconRegion *)region {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        RACDisposable *disposable = [[[[[self
+            rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            filter:^BOOL(RACTuple *tuple) {
+                return [tuple.third isEqual:region];
+            }]
+            reduceEach:^(CLLocationManager *manager, CLRegionState state, CLRegion *region) {
+                return @(state == CLRegionStateInside);
+            }]
+            take:1]
+            subscribe:subscriber];
+        
+        [self.locationManager requestStateForRegion:region];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [disposable dispose];
+        }];
 
-- (RACSignal *)beaconSignal {
-    return [RACSignal defer:^{
-        [self.locationManager startRangingBeaconsInRegion:self.region];
-        return [[self rac_signalForSelector:@selector(locationManager:didRangeBeacons:inRegion:) fromProtocol:@protocol(CLLocationManagerDelegate)]
-                reduceEach:^(CLLocationManager *manager, NSArray *beacons, CLBeaconRegion *region) {
-                    return beacons;
-                }];
     }];
 }
 
@@ -76,5 +132,46 @@
     NSLog(@"Worse things: %@", error);
 }
 
+
+@end
+
+@implementation RBNLocationManager (Deprecated)
+
+- (RACSignal *)fetchState {
+    return [RACSignal defer:^{
+        [self.locationManager requestStateForRegion:self.region];
+        return [[[self
+            rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            reduceEach:^(CLLocationManager *manager, CLRegionState state, CLRegion *region){
+                return @(state);
+            }]
+            take:1];
+    }];
+}
+
+- (RACSignal *)regionSignal {
+    return [RACSignal defer:^{
+        [self.locationManager startMonitoringForRegion:self.region];
+        return [[self
+            rac_signalForSelector:@selector(locationManager:didEnterRegion:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            reduceEach:^(CLLocationManager *manager, CLRegion *region){
+                return region;
+            }];
+    }];
+}
+
+- (RACSignal *)beaconSignal {
+    return [RACSignal defer:^{
+        [self.locationManager startRangingBeaconsInRegion:self.region];
+        return [[self
+            rac_signalForSelector:@selector(locationManager:didRangeBeacons:inRegion:)
+            fromProtocol:@protocol(CLLocationManagerDelegate)]
+            reduceEach:^(CLLocationManager *manager, NSArray *beacons, CLBeaconRegion *region) {
+                return beacons;
+            }];
+    }];
+}
 
 @end
