@@ -132,7 +132,6 @@
     NSLog(@"Worse things: %@", error);
 }
 
-
 @end
 
 @implementation RBNLocationManager (Deprecated)

@@ -1,0 +1,10 @@
+target 'ReactiveBeacon', :exclusive => true do
+  pod "ReactiveBeacon", :path => "../"
+end
+
+target 'ReactiveBeaconTests', :exclusive => true do
+  pod "ReactiveBeacon", :path => "../"
+
+  pod 'Specta', '~> 0.2.1'
+  pod 'Expecta'
+end

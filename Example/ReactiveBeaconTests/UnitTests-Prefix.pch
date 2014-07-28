@@ -1,0 +1,15 @@
+//
+//  UnitTests-Prefix.pch
+//  ReactiveBeacon
+//
+//  Created by Eli Perkins on 7/28/14.
+//  Copyright (c) 2014 Eli Perkins. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+    #define EXP_SHORTHAND
+    #import <Specta/Specta.h>
+    #import <Expecta/Expecta.h>
+
+#endif
