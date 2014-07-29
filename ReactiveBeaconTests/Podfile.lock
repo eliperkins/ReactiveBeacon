@@ -3,7 +3,7 @@ PODS:
   - Expecta+ContainerClasses (1.0.1):
     - Expecta (~> 0.3)
   - OCMock (3.0.2)
-  - ReactiveBeacon (0.0.2):
+  - ReactiveBeacon (0.1.0):
     - ReactiveCocoa (~> 2.3.1)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
@@ -29,7 +29,7 @@ SPEC CHECKSUMS:
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   Expecta+ContainerClasses: 133bc371f56077db752a561d922e411d52e5c162
   OCMock: b9836ab89d8d5e66cbe6333f93857037c310ee62
-  ReactiveBeacon: 0b0dbee17ad1f41c49d8a1a3d9192401c62a22e0
+  ReactiveBeacon: bd2c4c46dbf52e95989e9219dd7a27b141b5305e
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 

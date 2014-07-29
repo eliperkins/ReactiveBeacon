@@ -8,7 +8,7 @@ before_script:
   - export LANG=en_US.UTF-8
   - gem i cocoapods --no-ri --no-rdoc
   - gem i slather --no-ri --no-rdoc
-  - cd Example; pod update ; cd ..
+  - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
 script:
-- xcodebuild -workspace Example/ReactiveBeacon.xcworkspace -scheme ReactiveBeacon -sdk iphonesimulator test | xcpretty -c
+- xcodebuild -workspace ReactiveBeaconTests/ReactiveBeacon.xcworkspace -scheme ReactiveBeacon -sdk iphonesimulator test | xcpretty -c
 after_success: slather
