@@ -1,5 +1,5 @@
 # ReactiveBeacon
-[![Build Status](http://img.shields.io/traviseliperkins/ReactiveBeacon.svg?style=flat)](https://travis-ci.org/eliperkins/ReactiveBeacon)
+[![Build Status](http://img.shields.io/travis/eliperkins/ReactiveBeacon.svg?style=flat)](https://travis-ci.org/eliperkins/ReactiveBeacon)
 [![Documentation](http://img.shields.io/cocoapods/p/ReactiveBeacon.svg?style=flat)](http://cocoadocs.org/docsets/ReactiveBeacon)
 [![Coverage](http://img.shields.io/coveralls/eliperkins/ReactiveBeacon.svg?style=flat)](https://coveralls.io/r/eliperkins/ReactiveBeacon?branch=master)
 
