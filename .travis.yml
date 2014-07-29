@@ -10,5 +10,5 @@ before_script:
   - gem i slather --no-ri --no-rdoc
   - cd Example; pod update ; cd ..
 script:
-- xcodebuild -workspace Example/ReactiveBeacon.xcworkspace -scheme 'iOS Tests' -sdk iphonesimulator -destination 'name=iPhone Retina (4-inch)' test | xcpretty -c | sed "s/^/ /" ; exit ${PIPESTATUS[0]}
+- xcodebuild -workspace Example/ReactiveBeacon.xcworkspace -scheme 'ReactiveBeacon' -sdk iphonesimulator -destination 'name=iPhone Retina (4-inch)' test | xcpretty -c
 after_success: slather
