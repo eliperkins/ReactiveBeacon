@@ -5,8 +5,10 @@ before_script:
   - export LANG=en_US.UTF-8
   - gem i cocoapods --no-ri --no-rdoc
   - brew update
-  - brew uninstall xctool
-  - brew install xctool
+  - brew upgrade xctool
   - cd Example; pod update ; cd ..
+xcode_sdk: iphonesimulator
+xcode_workspace: Example/ReactiveBeacon.xcworkspace
+xcode_scheme: ReactiveBeacon
 script:
-- xctool test -workspace Example/ReactiveBeacon.xcworkspace -scheme ReactiveBeacon -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xcodebuild -workspace Example/ReactiveBeacon.xcworkspace -scheme ReactiveBeacon -sdk iphonesimulator test | xcpretty -c
