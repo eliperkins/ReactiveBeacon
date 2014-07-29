@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ReactiveBeacon"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "ReactiveCocoa bindings for iBeacon related activities"
 
   s.description  = <<-DESC
@@ -12,16 +12,14 @@ Pod::Spec.new do |s|
   s.author             = { "Eli Perkins" => "eli.j.perkins@gmail.com" }
   s.social_media_url   = "http://twitter.com/_eliperkins"
 
-  s.ios.deployment_target = "6.0"
-
+  s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source        = { :git => "https://github.com/eliperkins/ReactiveBeacon.git", :tag => "0.0.1" }
+  s.source        = { :git => "https://github.com/eliperkins/ReactiveBeacon.git", :tag => "0.0.2" }
 
   s.license       = 'MIT'
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = 'ReactiveBeacon/Classes'
 
   s.framework     = "CoreLocation"
 

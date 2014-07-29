@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2DCF9D3B1986EC9000606D17 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF9D3A1986EC9000606D17 /* main.m */; };
+		2DCF9D3E1986EC9000606D17 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF9D3D1986EC9000606D17 /* AppDelegate.m */; };
+		2DCF9D411986EC9000606D17 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF9D401986EC9000606D17 /* ViewController.m */; };
+		2DCF9D441986EC9000606D17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCF9D421986EC9000606D17 /* Main.storyboard */; };
+		2DCF9D461986EC9000606D17 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCF9D451986EC9000606D17 /* Images.xcassets */; };
+		2DCF9D521986EC9000606D17 /* ReactiveBeaconTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */; };
+		670FDA41FBB64449B176E748 /* libPods-ReactiveBeaconTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5A20779F1B4BF08604E48E /* libPods-ReactiveBeaconTests.a */; };
+		F4A6E31BE82A4184967F6CBE /* libPods-ReactiveBeacon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B855A9E3EE644896B5A1B3F1 /* libPods-ReactiveBeacon.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D561F351986F135004E1279 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
+		2DCF9D4C1986EC9000606D17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
+		2DCF9D5B1986ED0300606D17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
+		2DCF9D5D1986ED0300606D17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
+		2DCF9D5F1986ED0700606D17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
+		2DCF9D611986ED0C00606D17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
+		2DE1C2081987FE1900811011 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveBeaconTests.xcconfig"; path = "Pods/Pods-ReactiveBeaconTests.xcconfig"; sourceTree = "<group>"; };
+		28C17DFA3A9E4CB6A3F7EB68 /* Pods-ReactiveBeacon.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveBeacon.xcconfig"; path = "Pods/Pods-ReactiveBeacon.xcconfig"; sourceTree = "<group>"; };
+		2DCF9D351986EC9000606D17 /* ReactiveBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DCF9D391986EC9000606D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DCF9D3A1986EC9000606D17 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2DCF9D3C1986EC9000606D17 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2DCF9D3D1986EC9000606D17 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2DCF9D3F1986EC9000606D17 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2DCF9D401986EC9000606D17 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2DCF9D431986EC9000606D17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2DCF9D451986EC9000606D17 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2DCF9D4B1986EC9000606D17 /* ReactiveBeaconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBeaconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DCF9D501986EC9000606D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBeaconTests.m; sourceTree = "<group>"; };
+		2DEC129C1986F2BF00D69D3B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		B855A9E3EE644896B5A1B3F1 /* libPods-ReactiveBeacon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveBeacon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF5A20779F1B4BF08604E48E /* libPods-ReactiveBeaconTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveBeaconTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DCF9D321986EC9000606D17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4A6E31BE82A4184967F6CBE /* libPods-ReactiveBeacon.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DCF9D481986EC9000606D17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				670FDA41FBB64449B176E748 /* libPods-ReactiveBeaconTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2DCF9D2C1986EC9000606D17 = {
+			isa = PBXGroup;
+			children = (
+				2DCF9D371986EC9000606D17 /* ReactiveBeacon */,
+				2DCF9D4E1986EC9000606D17 /* ReactiveBeaconTests */,
+				2DCF9D361986EC9000606D17 /* Products */,
+				28C17DFA3A9E4CB6A3F7EB68 /* Pods-ReactiveBeacon.xcconfig */,
+				BED4164D344C46DEBA896B0D /* Frameworks */,
+				1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		2DCF9D361986EC9000606D17 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DCF9D351986EC9000606D17 /* ReactiveBeacon.app */,
+				2DCF9D4B1986EC9000606D17 /* ReactiveBeaconTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DCF9D371986EC9000606D17 /* ReactiveBeacon */ = {
+			isa = PBXGroup;
+			children = (
+				2DCF9D3C1986EC9000606D17 /* AppDelegate.h */,
+				2DCF9D3D1986EC9000606D17 /* AppDelegate.m */,
+				2DCF9D3F1986EC9000606D17 /* ViewController.h */,
+				2DCF9D401986EC9000606D17 /* ViewController.m */,
+				2DCF9D421986EC9000606D17 /* Main.storyboard */,
+				2DCF9D451986EC9000606D17 /* Images.xcassets */,
+				2DCF9D381986EC9000606D17 /* Supporting Files */,
+			);
+			path = ReactiveBeacon;
+			sourceTree = "<group>";
+		};
+		2DCF9D381986EC9000606D17 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DCF9D391986EC9000606D17 /* Info.plist */,
+				2DCF9D3A1986EC9000606D17 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2DCF9D4E1986EC9000606D17 /* ReactiveBeaconTests */ = {
+			isa = PBXGroup;
+			children = (
+				2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */,
+				2DCF9D4F1986EC9000606D17 /* Supporting Files */,
+			);
+			path = ReactiveBeaconTests;
+			sourceTree = "<group>";
+		};
+		2DCF9D4F1986EC9000606D17 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DEC129C1986F2BF00D69D3B /* UnitTests-Prefix.pch */,
+				2DCF9D501986EC9000606D17 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BED4164D344C46DEBA896B0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B855A9E3EE644896B5A1B3F1 /* libPods-ReactiveBeacon.a */,
+				DF5A20779F1B4BF08604E48E /* libPods-ReactiveBeaconTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DCF9D341986EC9000606D17 /* ReactiveBeacon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DCF9D551986EC9000606D17 /* Build configuration list for PBXNativeTarget "ReactiveBeacon" */;
+			buildPhases = (
+				838C4CC83AF548C2A59B9426 /* Check Pods Manifest.lock */,
+				2DCF9D311986EC9000606D17 /* Sources */,
+				2DCF9D321986EC9000606D17 /* Frameworks */,
+				2DCF9D331986EC9000606D17 /* Resources */,
+				DB455D68CB4F4CA99942A3A5 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactiveBeacon;
+			productName = ReactiveBeacon;
+			productReference = 2DCF9D351986EC9000606D17 /* ReactiveBeacon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2DCF9D4A1986EC9000606D17 /* ReactiveBeaconTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DCF9D581986EC9000606D17 /* Build configuration list for PBXNativeTarget "ReactiveBeaconTests" */;
+			buildPhases = (
+				FCCA3271385C4A3C9B56C67C /* Check Pods Manifest.lock */,
+				2DCF9D471986EC9000606D17 /* Sources */,
+				2DCF9D481986EC9000606D17 /* Frameworks */,
+				2DCF9D491986EC9000606D17 /* Resources */,
+				BADCBB176C7C4769B5268C20 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2DCF9D4D1986EC9000606D17 /* PBXTargetDependency */,
+				2DCF9D5C1986ED0300606D17 /* PBXTargetDependency */,
+				2DCF9D5E1986ED0300606D17 /* PBXTargetDependency */,
+				2DCF9D601986ED0700606D17 /* PBXTargetDependency */,
+				2DCF9D621986ED0C00606D17 /* PBXTargetDependency */,
+				2D561F361986F135004E1279 /* PBXTargetDependency */,
+				2DE1C2091987FE1900811011 /* PBXTargetDependency */,
+			);
+			name = ReactiveBeaconTests;
+			productName = ReactiveBeaconTests;
+			productReference = 2DCF9D4B1986EC9000606D17 /* ReactiveBeaconTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DCF9D2D1986EC9000606D17 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Eli Perkins";
+				TargetAttributes = {
+					2DCF9D341986EC9000606D17 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z5S2233RU5;
+					};
+					2DCF9D4A1986EC9000606D17 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 2DCF9D341986EC9000606D17;
+					};
+				};
+			};
+			buildConfigurationList = 2DCF9D301986EC9000606D17 /* Build configuration list for PBXProject "ReactiveBeacon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2DCF9D2C1986EC9000606D17;
+			productRefGroup = 2DCF9D361986EC9000606D17 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2DCF9D341986EC9000606D17 /* ReactiveBeacon */,
+				2DCF9D4A1986EC9000606D17 /* ReactiveBeaconTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DCF9D331986EC9000606D17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCF9D441986EC9000606D17 /* Main.storyboard in Resources */,
+				2DCF9D461986EC9000606D17 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DCF9D491986EC9000606D17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		838C4CC83AF548C2A59B9426 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BADCBB176C7C4769B5268C20 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ReactiveBeaconTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB455D68CB4F4CA99942A3A5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ReactiveBeacon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCCA3271385C4A3C9B56C67C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DCF9D311986EC9000606D17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCF9D411986EC9000606D17 /* ViewController.m in Sources */,
+				2DCF9D3E1986EC9000606D17 /* AppDelegate.m in Sources */,
+				2DCF9D3B1986EC9000606D17 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DCF9D471986EC9000606D17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCF9D521986EC9000606D17 /* ReactiveBeaconTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D561F361986F135004E1279 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2D561F351986F135004E1279 /* PBXContainerItemProxy */;
+		};
+		2DCF9D4D1986EC9000606D17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2DCF9D4C1986EC9000606D17 /* PBXContainerItemProxy */;
+		};
+		2DCF9D5C1986ED0300606D17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2DCF9D5B1986ED0300606D17 /* PBXContainerItemProxy */;
+		};
+		2DCF9D5E1986ED0300606D17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2DCF9D5D1986ED0300606D17 /* PBXContainerItemProxy */;
+		};
+		2DCF9D601986ED0700606D17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2DCF9D5F1986ED0700606D17 /* PBXContainerItemProxy */;
+		};
+		2DCF9D621986ED0C00606D17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2DCF9D611986ED0C00606D17 /* PBXContainerItemProxy */;
+		};
+		2DE1C2091987FE1900811011 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2DE1C2081987FE1900811011 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2DCF9D421986EC9000606D17 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DCF9D431986EC9000606D17 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DCF9D531986EC9000606D17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2DCF9D541986EC9000606D17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2DCF9D561986EC9000606D17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28C17DFA3A9E4CB6A3F7EB68 /* Pods-ReactiveBeacon.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ReactiveBeacon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2DCF9D571986EC9000606D17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28C17DFA3A9E4CB6A3F7EB68 /* Pods-ReactiveBeacon.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ReactiveBeacon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2DCF9D591986EC9000606D17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReactiveBeacon.app/ReactiveBeacon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBeaconTests/UnitTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ReactiveBeaconTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		2DCF9D5A1986EC9000606D17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReactiveBeacon.app/ReactiveBeacon";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBeaconTests/UnitTests-Prefix.pch";
+				INFOPLIST_FILE = ReactiveBeaconTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DCF9D301986EC9000606D17 /* Build configuration list for PBXProject "ReactiveBeacon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DCF9D531986EC9000606D17 /* Debug */,
+				2DCF9D541986EC9000606D17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DCF9D551986EC9000606D17 /* Build configuration list for PBXNativeTarget "ReactiveBeacon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DCF9D561986EC9000606D17 /* Debug */,
+				2DCF9D571986EC9000606D17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DCF9D581986EC9000606D17 /* Build configuration list for PBXNativeTarget "ReactiveBeaconTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DCF9D591986EC9000606D17 /* Debug */,
+				2DCF9D5A1986EC9000606D17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DCF9D2D1986EC9000606D17 /* Project object */;
+}

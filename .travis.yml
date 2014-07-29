@@ -1,0 +1,12 @@
+# reference: http://www.objc.io/issue-6/travis-ci.html
+
+language: objective-c
+before_script:
+  - export LANG=en_US.UTF-8
+  - gem i cocoapods --no-ri --no-rdoc
+  - cd Example; pod update ; cd ..
+xcode_sdk: iphonesimulator
+xcode_workspace: Example/ReactiveBeacon.xcworkspace
+xcode_scheme: ReactiveBeacon
+script:
+- xcodebuild -workspace Example/ReactiveBeacon.xcworkspace -scheme ReactiveBeacon -sdk iphonesimulator test | xcpretty -c
