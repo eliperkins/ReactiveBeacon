@@ -11,7 +11,7 @@
 
 @import CoreLocation;
 
-@interface RBNLocationManager () <CLLocationManagerDelegate>
+@interface RBNLocationManager ()
 
 @property (nonatomic, strong) CLBeaconRegion *region;
 
@@ -105,8 +105,8 @@
             filter:^BOOL(RACTuple *tuple) {
                 return [tuple.third isEqual:region];
             }]
-            reduceEach:^(CLLocationManager *manager, CLRegionState state, CLRegion *region) {
-                return @(state == CLRegionStateInside);
+            reduceEach:^(CLLocationManager *manager, NSNumber *state, CLRegion *region) {
+                return @(state.integerValue == CLRegionStateInside);
             }]
             take:1]
             subscribe:subscriber];

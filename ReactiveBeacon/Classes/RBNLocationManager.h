@@ -11,7 +11,7 @@
 
 @import CoreLocation;
 
-@interface RBNLocationManager : NSObject
+@interface RBNLocationManager : NSObject <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
