@@ -1,0 +1,11 @@
+highlight-font: '"lft-etica", Helvetica, Arial, sans-serif'
+body: '"proxima-nova", Helvetica, Arial, sans-serif'
+code: '"Monaco", "Menlo", "Consolas", "Courier New", monospace'
+
+highlight-color: "#EB3349"
+highlight-dark-color: "#32383E"
+darker-color: "#EB3349"
+darker-dark-color: "#252A2E"
+background-color: "#F4F6F9"
+alt-link-color: "#2D99D3"
+warning-color: "#FFC274"
