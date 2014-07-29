@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source        = { :git => "https://github.com/eliperkins/ReactiveBeacon.git", :tag => "0.0.2" }
+  s.source        = { :git => "https://github.com/eliperkins/ReactiveBeacon.git", :tag => "0.1.0" }
 
   s.license       = 'MIT'
 
