@@ -85,6 +85,22 @@ describe(@"RBNLocationManager", ^{
             expect(presence).to.beTruthy();
             expect(success).to.beTruthy();
         });
+        
+        it(@"sends an error when monitoring fails", ^{
+            RACSignal *signal = [manager presenceForRegion:region];
+            
+            __block NSError *error;
+            
+            [signal subscribeError:^(NSError *e) {
+                error = e;
+            }];
+            expect(error).to.beNil();
+            
+            NSError *mockError = [NSError errorWithDomain:@"com.robinpowered.reactivebeacon" code:-1001 userInfo:@{}];
+            [manager locationManager:manager.locationManager monitoringDidFailForRegion:region withError:mockError];
+            
+            expect(error).will.equal(mockError);
+        });
     });
 });
 
