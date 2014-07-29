@@ -60,6 +60,13 @@
 			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
 			remoteInfo = ReactiveBeacon;
 		};
+		2DE1C2081987FE1900811011 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -214,6 +221,7 @@
 				2DCF9D601986ED0700606D17 /* PBXTargetDependency */,
 				2DCF9D621986ED0C00606D17 /* PBXTargetDependency */,
 				2D561F361986F135004E1279 /* PBXTargetDependency */,
+				2DE1C2091987FE1900811011 /* PBXTargetDependency */,
 			);
 			name = ReactiveBeaconTests;
 			productName = ReactiveBeaconTests;
@@ -391,6 +399,11 @@
 			isa = PBXTargetDependency;
 			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
 			targetProxy = 2DCF9D611986ED0C00606D17 /* PBXContainerItemProxy */;
+		};
+		2DE1C2091987FE1900811011 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2DE1C2081987FE1900811011 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
