@@ -1,0 +1,5 @@
+# coverage_service: coveralls
+xcodeproj: Example/ReactiveBeacon.xcodeproj
+ignore:
+  - Example/*
+  - Example/ReactiveBeaconTests/*
