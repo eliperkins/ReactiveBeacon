@@ -1,6 +1,4 @@
-target 'ReactiveBeacon', :exclusive => true do
-  pod "ReactiveBeacon", :path => "../"
-end
+workspace '../ReactiveBeacon.xcworkspace'
 
 target 'ReactiveBeaconTests', :exclusive => true do
   pod "ReactiveBeacon", :path => "../"
@@ -9,4 +7,11 @@ target 'ReactiveBeaconTests', :exclusive => true do
   pod 'Expecta'
   pod 'OCMock', '~> 3.0.2'
   pod 'Expecta+ContainerClasses', '~> 1.0.1'
+end
+
+begin
+  require 'slather'
+  Slather.prepare_pods(self)
+rescue LoadError
+  UI.warn 'Slather has been disabled (not installed).'
 end

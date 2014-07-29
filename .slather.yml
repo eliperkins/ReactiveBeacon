@@ -1,5 +1,6 @@
 # coverage_service: coveralls
-xcodeproj: Example/ReactiveBeacon.xcodeproj
+xcodeproj: ReactiveBeaconTests/ReactiveBeacon.xcodeproj
+source_directory: ReactiveBeacon/Classes
 ignore:
-  - Example/*
-  - Example/ReactiveBeaconTests/*
+  - ReactiveBeaconTests/ReactiveBeaconTests/*
+  - "*/Pods/*"
