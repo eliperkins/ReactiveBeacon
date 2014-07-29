@@ -25,6 +25,13 @@
 			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
 			remoteInfo = ReactiveBeacon;
 		};
+		2D6434FF19883550001AA22A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DCF9D341986EC9000606D17;
+			remoteInfo = ReactiveBeacon;
+		};
 		2DCF9D4C1986EC9000606D17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2DCF9D2D1986EC9000606D17 /* Project object */;
@@ -222,6 +229,7 @@
 				2DCF9D621986ED0C00606D17 /* PBXTargetDependency */,
 				2D561F361986F135004E1279 /* PBXTargetDependency */,
 				2DE1C2091987FE1900811011 /* PBXTargetDependency */,
+				2D64350019883550001AA22A /* PBXTargetDependency */,
 			);
 			name = ReactiveBeaconTests;
 			productName = ReactiveBeaconTests;
@@ -375,6 +383,11 @@
 			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
 			targetProxy = 2D561F351986F135004E1279 /* PBXContainerItemProxy */;
 		};
+		2D64350019883550001AA22A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
+			targetProxy = 2D6434FF19883550001AA22A /* PBXContainerItemProxy */;
+		};
 		2DCF9D4D1986EC9000606D17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2DCF9D341986EC9000606D17 /* ReactiveBeacon */;
@@ -509,6 +522,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ReactiveBeacon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -522,6 +536,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ReactiveBeacon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
