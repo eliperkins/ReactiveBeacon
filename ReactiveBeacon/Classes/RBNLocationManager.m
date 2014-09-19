@@ -13,8 +13,6 @@
 
 @interface RBNLocationManager ()
 
-@property (nonatomic, strong) CLBeaconRegion *region;
-
 @end
 
 @implementation RBNLocationManager
@@ -23,15 +21,14 @@
     self = [super init];
     if (self) {
         _locationManager = [[CLLocationManager alloc] init];
+
         _locationManager.delegate = self;
         _region = [[CLBeaconRegion alloc] initWithProximityUUID:UUID identifier:@"com.robinpowered.rbnlocationmanager"];
+
         self.region.notifyOnEntry = YES;
         self.region.notifyOnExit = YES;
         self.region.notifyEntryStateOnDisplay = YES;
-        [self.locationManager startMonitoringForRegion:self.region];
-        [self.locationManager startRangingBeaconsInRegion:self.region];
-        [self.locationManager startUpdatingLocation];
-        
+
         _beaconsInRange = [[[self
             rac_signalForSelector:@selector(locationManager:didRangeBeacons:inRegion:)
             fromProtocol:@protocol(CLLocationManagerDelegate)]
@@ -55,7 +52,7 @@
                 return [enteredRegion isEqual:region];
             }]
             mapReplace:@YES];
-        
+
         RACSignal *exitSignal = [[[[self
             rac_signalForSelector:@selector(locationManager:didExitRegion:)
             fromProtocol:@protocol(CLLocationManagerDelegate)]
@@ -66,12 +63,12 @@
                 return [exitedRegion isEqual:region];
             }]
             mapReplace:@NO];
-        
+
         // Currently, iOS will not send the initial state for a region
         // immediately via didEnterRegion or didExitRegion
         // But, explicitly requesting it will get the initial state
         RACSignal *currentSignal = [self fetchPresenceForRegion:region];
-        
+
         RACDisposable *disposable = [[RACSignal
             merge:@[ currentSignal, entranceSignal, exitSignal ]]
             subscribe:subscriber];
@@ -86,9 +83,9 @@
             subscribeNext:^(RACTuple *tuple) {
                 [subscriber sendError:tuple.third];
             }];
-        
+
         [self.locationManager startMonitoringForRegion:region];
-        
+
         return [RACDisposable disposableWithBlock:^{
             [disposable dispose];
             [failedDisposable dispose];
@@ -99,7 +96,7 @@
 
 - (RACSignal *)fetchPresenceForRegion:(CLBeaconRegion *)region {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        RACDisposable *disposable = [[[[[self
+        RACDisposable *disposable = [[[[self
             rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:)
             fromProtocol:@protocol(CLLocationManagerDelegate)]
             filter:^BOOL(RACTuple *tuple) {
@@ -108,11 +105,10 @@
             reduceEach:^(CLLocationManager *manager, NSNumber *state, CLRegion *region) {
                 return @(state.integerValue == CLRegionStateInside);
             }]
-            take:1]
             subscribe:subscriber];
-        
+
         [self.locationManager requestStateForRegion:region];
-        
+
         return [RACDisposable disposableWithBlock:^{
             [disposable dispose];
         }];
