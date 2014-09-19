@@ -55,11 +55,3 @@
 - (RACSignal *)fetchPresenceForRegion:(CLBeaconRegion *)region;
 
 @end
-
-@interface RBNLocationManager (Deprecated)
-
-- (RACSignal *)fetchState __attribute__((deprecated("Use -fetchPresenceForRegion: instead")));
-- (RACSignal *)regionSignal __attribute__((deprecated("Use -presenceForRegion: instead")));
-- (RACSignal *)beaconSignal __attribute__((deprecated("Use -beaconsInRange instead")));
-
-@end
