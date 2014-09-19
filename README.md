@@ -8,7 +8,7 @@ ReactiveCocoa bindings for iBeacon activities, mainly monitoring and ranging.
 
 ## Usage
 
-* Add `pod 'ReactiveBeacon', '~> 0.1.0'` to your Podfile
+* Add `pod 'ReactiveBeacon', '~> 0.2.0'` to your Podfile
 * `pod install`
 * `#import <ReactiveBeacon/ReactiveBeacon.h>`
 
