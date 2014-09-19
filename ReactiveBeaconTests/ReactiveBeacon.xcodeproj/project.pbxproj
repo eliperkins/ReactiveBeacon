@@ -12,11 +12,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveBeaconTests.xcconfig"; path = "Pods/Pods-ReactiveBeaconTests.xcconfig"; sourceTree = "<group>"; };
 		2DCF9D4B1986EC9000606D17 /* ReactiveBeaconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBeaconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCF9D501986EC9000606D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBeaconTests.m; sourceTree = "<group>"; };
 		2DEC129C1986F2BF00D69D3B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
+		7178902C3B1BCC412E1211A9 /* Pods-ReactiveBeaconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveBeaconTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactiveBeaconTests/Pods-ReactiveBeaconTests.release.xcconfig"; sourceTree = "<group>"; };
+		87D235C6851D6A12EE624F9C /* Pods-ReactiveBeaconTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveBeaconTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactiveBeaconTests/Pods-ReactiveBeaconTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B855A9E3EE644896B5A1B3F1 /* libPods-ReactiveBeacon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveBeacon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF5A20779F1B4BF08604E48E /* libPods-ReactiveBeaconTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveBeaconTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -39,7 +40,7 @@
 				2DCF9D4E1986EC9000606D17 /* ReactiveBeaconTests */,
 				2DCF9D361986EC9000606D17 /* Products */,
 				BED4164D344C46DEBA896B0D /* Frameworks */,
-				1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */,
+				D37133BD1B816395C67C6DEB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +77,15 @@
 				DF5A20779F1B4BF08604E48E /* libPods-ReactiveBeaconTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D37133BD1B816395C67C6DEB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87D235C6851D6A12EE624F9C /* Pods-ReactiveBeaconTests.debug.xcconfig */,
+				7178902C3B1BCC412E1211A9 /* Pods-ReactiveBeaconTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +165,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ReactiveBeaconTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReactiveBeaconTests/Pods-ReactiveBeaconTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCCA3271385C4A3C9B56C67C /* Check Pods Manifest.lock */ = {
@@ -271,7 +281,7 @@
 		};
 		2DCF9D591986EC9000606D17 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */;
+			baseConfigurationReference = 87D235C6851D6A12EE624F9C /* Pods-ReactiveBeaconTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -292,7 +302,7 @@
 		};
 		2DCF9D5A1986EC9000606D17 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B1A239EE346412D9C37BD5B /* Pods-ReactiveBeaconTests.xcconfig */;
+			baseConfigurationReference = 7178902C3B1BCC412E1211A9 /* Pods-ReactiveBeaconTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
