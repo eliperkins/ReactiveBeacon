@@ -96,7 +96,7 @@
 
 - (RACSignal *)fetchPresenceForRegion:(CLBeaconRegion *)region {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        RACDisposable *disposable = [[[[self
+        RACDisposable *disposable = [[[[[self
             rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:)
             fromProtocol:@protocol(CLLocationManagerDelegate)]
             filter:^BOOL(RACTuple *tuple) {
@@ -105,6 +105,7 @@
             reduceEach:^(CLLocationManager *manager, NSNumber *state, CLRegion *region) {
                 return @(state.integerValue == CLRegionStateInside);
             }]
+            take:1]
             subscribe:subscriber];
 
         [self.locationManager requestStateForRegion:region];
