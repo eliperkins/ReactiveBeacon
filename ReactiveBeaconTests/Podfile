@@ -9,5 +9,5 @@ target 'ReactiveBeaconTests', :exclusive => true do
   pod 'Expecta'
   pod 'OCMock', '~> 3.0.2'
   pod 'Expecta+ContainerClasses', '~> 1.0.1'
-  pod 'LLReactiveMatchers', :git => 'git@github.com:lawrencelomax/LLReactiveMatchers.git'
+  pod 'LLReactiveMatchers', :git => 'https://github.com/lawrencelomax/LLReactiveMatchers.git'
 end

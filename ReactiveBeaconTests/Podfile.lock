@@ -21,14 +21,14 @@ PODS:
 DEPENDENCIES:
   - Expecta
   - Expecta+ContainerClasses (~> 1.0.1)
-  - LLReactiveMatchers (from `git@github.com:lawrencelomax/LLReactiveMatchers.git`)
+  - LLReactiveMatchers (from `https://github.com/lawrencelomax/LLReactiveMatchers.git`)
   - OCMock (~> 3.0.2)
   - ReactiveBeacon (from `../`)
   - Specta (~> 0.2.1)
 
 EXTERNAL SOURCES:
   LLReactiveMatchers:
-    :git: git@github.com:lawrencelomax/LLReactiveMatchers.git
+    :git: https://github.com/lawrencelomax/LLReactiveMatchers.git
   ReactiveBeacon:
     :path: ../
 
