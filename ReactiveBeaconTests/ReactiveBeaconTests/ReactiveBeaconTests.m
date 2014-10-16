@@ -69,14 +69,11 @@ describe(@"RBNLocationManager", ^{
         
         it(@"fetches presence for a specfied region", ^{
             RACSignal *signal = [manager fetchPresenceForRegion:region];
-
-            BOOL success = NO;
-            NSNumber *boxedPresence = [signal asynchronousFirstOrDefault:nil success:&success error:NULL];
+            
+            expect(signal).will.sendValues(@YES);
+            expect(signal).will.complete();
             
             [manager locationManager:manager.locationManager didDetermineState:CLRegionStateInside forRegion:region];
-
-            expect(boxedPresence.boolValue).to.beTruthy();
-            expect(success).to.beTruthy();
         });
         
         it(@"sends an error when monitoring fails", ^{

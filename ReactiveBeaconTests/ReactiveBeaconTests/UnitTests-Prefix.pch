@@ -13,4 +13,5 @@
     #import <Expecta/Expecta.h>
     #import <OCMock/OCMock.h>
     #import <Expecta+ContainerClasses/EXPMatchers+ContainsInstancesOf.h>
+    #import <LLReactiveMatchers/LLReactiveMatchers.h>
 #endif
