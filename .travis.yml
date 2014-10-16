@@ -9,5 +9,5 @@ before_script:
   - gem i xcpretty --no-ri --no-rdoc
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
 script:
-- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme 'ReactiveBeaconTests' -sdk iphonesimulator test | xcpretty -c
+- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme 'ReactiveBeaconTests' -sdk iphonesimulator test | xcpretty -c && exit ${PIPESTATUS[0]}
 after_success: slather

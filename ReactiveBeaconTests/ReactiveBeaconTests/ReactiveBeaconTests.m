@@ -69,20 +69,13 @@ describe(@"RBNLocationManager", ^{
         
         it(@"fetches presence for a specfied region", ^{
             RACSignal *signal = [manager fetchPresenceForRegion:region];
-            
-            __block BOOL presence = NO;
-            [signal subscribeNext:^(NSNumber *present) {
-                expect(present).to.beKindOf(NSNumber.class);
-                
-                presence = present.boolValue;
-            }];
-            expect(presence).to.beFalsy();
+
+            BOOL success = NO;
+            NSNumber *boxedPresence = [signal asynchronousFirstOrDefault:nil success:&success error:NULL];
             
             [manager locationManager:manager.locationManager didDetermineState:CLRegionStateInside forRegion:region];
-            
-            expect(presence).to.beTruthy();
-            
-            BOOL success = [signal asynchronouslyWaitUntilCompleted:NULL];
+
+            expect(boxedPresence.boolValue).to.beTruthy();
             expect(success).to.beTruthy();
         });
         
