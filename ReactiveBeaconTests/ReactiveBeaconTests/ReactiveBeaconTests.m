@@ -11,7 +11,6 @@
 
 SpecBegin(InitialSpecs)
 
-
 describe(@"RBNLocationManager", ^{
     NSUUID *UUID = [NSUUID UUID];
     
@@ -34,75 +33,48 @@ describe(@"RBNLocationManager", ^{
     
     describe(@"beacon signals", ^{
         it(@"contains a signal of nearby beacons", ^{
-            __block CLBeacon *beacon;
-            [manager.beaconsInRange subscribeNext:^(NSArray *beacons) {
-                expect(beacons).to.containInstancesOfClass(CLBeacon.class);
-                
-                beacon = beacons.firstObject;
-            }];
-            
+            RACSignal *signal = manager.beaconsInRange;
+            LLSignalTestRecorder *recorder = [LLSignalTestRecorder recordWithSignal:signal];
+
             [manager locationManager:manager.locationManager didRangeBeacons:@[mockBeacon] inRegion:region];
             
-            expect(beacon).to.equal(mockBeacon);
+            expect(recorder).to.sendValues(@[ @[mockBeacon] ]);
         });
     });
     
     describe(@"region signals", ^{
         it(@"creates presence signals for specfied regions", ^{
             RACSignal *signal = [manager presenceForRegion:region];
-            
-            __block BOOL presence = NO;
-            
-            [signal subscribeNext:^(NSNumber *present) {
-                expect(present).to.beKindOf(NSNumber.class);
-                
-                presence = present.boolValue;
-            }];
-            expect(presence).to.beFalsy();
-            
+            LLSignalTestRecorder *recorder = [LLSignalTestRecorder recordWithSignal:signal];
+
             [manager locationManager:manager.locationManager didEnterRegion:region];
-            expect(presence).to.beTruthy();
-            
             [manager locationManager:manager.locationManager didExitRegion:region];
-            expect(presence).to.beFalsy();
+            
+            expect(recorder).to.sendValues(@[ @YES, @NO ]);
         });
         
         it(@"fetches presence for a specfied region", ^{
             RACSignal *signal = [manager fetchPresenceForRegion:region];
-            
-            __block BOOL presence = NO;
-            __block BOOL success = NO;
-            [signal subscribeNext:^(NSNumber *present) {
-                expect(present).to.beKindOf(NSNumber.class);
-                
-                presence = present.boolValue;
-            } completed:^{
-                success = YES;
-            }];
-            expect(presence).to.beFalsy();
+            LLSignalTestRecorder *recorder = [LLSignalTestRecorder recordWithSignal:signal];
             
             [manager locationManager:manager.locationManager didDetermineState:CLRegionStateInside forRegion:region];
-            expect(presence).to.beTruthy();
-            expect(success).to.beTruthy();
+
+            expect(recorder).to.sendValues(@[ @YES ]);
+            expect(recorder).to.complete();
+            
         });
         
         it(@"sends an error when monitoring fails", ^{
             RACSignal *signal = [manager presenceForRegion:region];
-            
-            __block NSError *error;
-            
-            [signal subscribeError:^(NSError *e) {
-                error = e;
-            }];
-            expect(error).to.beNil();
+            LLSignalTestRecorder *recorder = [LLSignalTestRecorder recordWithSignal:signal];
             
             NSError *mockError = [NSError errorWithDomain:@"com.robinpowered.reactivebeacon" code:-1001 userInfo:@{}];
+
             [manager locationManager:manager.locationManager monitoringDidFailForRegion:region withError:mockError];
             
-            expect(error).will.equal(mockError);
+            expect(recorder).to.sendError(mockError);
         });
     });
 });
-
 
 SpecEnd
