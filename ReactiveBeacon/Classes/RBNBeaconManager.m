@@ -17,25 +17,44 @@
 @implementation RBNBeaconManager
 
 - (instancetype)initWithRegions:(NSSet *)regions {
+    return [self initWithRegions:regions locationManager:nil];
     self = [super init];
     if (self) {
-        _locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = self;
-        
-        for (RBNBeaconRegion *region in regions) {
-            region.manager = self;
+    }
+    return self;
+}
+
+- (instancetype)initWithRegions:(NSSet *)regions locationManager:(CLLocationManager *)locationManager {
+    self = [super init];
+    if (self) {
+        if (!locationManager) {
+            locationManager = [[CLLocationManager alloc] init];
         }
         
-        _presenceEvents = [RACSignal
-            merge:[regions.rac_sequence
-                map:^(RBNBeaconRegion *region) {
-                    // Skip the inital value for this combo-signal
-                    return [[RACObserve(region, presence)
-                        skip:1]
-                        map:^(NSNumber *presence) {
-                            return RACTuplePack(region, presence);
-                        }];
-                }]];
+        _locationManager = locationManager;
+        self.locationManager.delegate = self;
+        
+        RACSubject *subject = [RACSubject subject];
+        for (RBNBeaconRegion *region in regions) {
+            region.manager = self;
+            [[region.presence map:^(NSNumber *presence) {
+                return RACTuplePack(region, presence);
+            }] subscribe:subject];
+        }
+        _presenceEvents = subject;
+        
+//        _presenceEvents = [[RACSignal
+//            merge:[regions.rac_sequence
+//                map:^(RBNBeaconRegion *region) {
+//                    // Skip the inital value for this combo-signal
+//                    return [[region.presence
+//                        skip:1]
+//                        map:^(NSNumber *presence) {
+//                            return RACTuplePack(region, presence);
+//                        }];
+//                }]]
+//            setNameWithFormat:@"-presenceEvents: %@", self];
+
     }
     return self;
 }

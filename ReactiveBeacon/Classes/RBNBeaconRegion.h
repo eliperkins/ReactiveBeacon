@@ -13,7 +13,7 @@
 
 @interface RBNBeaconRegion : CLBeaconRegion
 
-@property (readonly, nonatomic, assign) BOOL presence;
+@property (readonly, nonatomic, strong) RACSignal *presence;
 
 @property (readonly, nonatomic, strong) RACSignal *rangedBeacons;
 

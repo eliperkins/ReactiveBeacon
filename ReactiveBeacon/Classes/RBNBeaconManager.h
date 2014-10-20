@@ -21,6 +21,8 @@
 
 - (instancetype)initWithRegions:(NSSet *)regions;
 
+- (instancetype)initWithRegions:(NSSet *)regions locationManager:(CLLocationManager *)locationManager;
+
 - (RACSignal *)fetchPresenceForRegion:(CLBeaconRegion *)region;
 
 @end
