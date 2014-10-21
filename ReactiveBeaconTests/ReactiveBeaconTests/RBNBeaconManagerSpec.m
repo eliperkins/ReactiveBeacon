@@ -56,7 +56,7 @@ describe(@"RBNBeaconManager", ^{
         
         manager = [[RBNBeaconManager alloc] initWithRegions:[NSSet setWithArray:@[ testRegionOne, testRegionTwo ]]
                                             locationManager:mockLocationManager
-                                                  scheduler:scheduler]; // Using main queue for tests only
+                                                  scheduler:scheduler];
     });
     
     afterEach(^{
