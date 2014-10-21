@@ -28,6 +28,4 @@
 
 - (instancetype)initWithRegions:(NSSet *)regions locationManager:(CLLocationManager *)locationManager scheduler:(RACScheduler *)scheduler;
 
-- (RACSignal *)fetchPresenceForRegion:(CLBeaconRegion *)region;
-
 @end

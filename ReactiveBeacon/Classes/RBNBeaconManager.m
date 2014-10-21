@@ -48,44 +48,9 @@
                 return RACTuplePack(region, presence);
             }] subscribe:subject];
         }
-        _presenceEvents = [subject subscribeOn:self.scheduler];
-        
-//        _presenceEvents = [[RACSignal
-//            merge:[regions.rac_sequence
-//                map:^(RBNBeaconRegion *region) {
-//                    // Skip the inital value for this combo-signal
-//                    return [[region.presence
-//                        skip:1]
-//                        map:^(NSNumber *presence) {
-//                            return RACTuplePack(region, presence);
-//                        }];
-//                }]]
-//            setNameWithFormat:@"-presenceEvents: %@", self];
-
+        _presenceEvents = [subject deliverOn:self.scheduler];
     }
     return self;
-}
-
-- (RACSignal *)fetchPresenceForRegion:(CLBeaconRegion *)region {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        RACDisposable *disposable = [[[[[self
-            rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:)
-            fromProtocol:@protocol(CLLocationManagerDelegate)]
-            filter:^BOOL(RACTuple *tuple) {
-                return [tuple.third isEqual:region];
-            }]
-            reduceEach:^(CLLocationManager *manager, NSNumber *state, CLRegion *region) {
-                return @(state.integerValue == CLRegionStateInside);
-            }]
-            take:1]
-            subscribe:subscriber];
-
-        [self.locationManager requestStateForRegion:region];
-
-        return [RACDisposable disposableWithBlock:^{
-            [disposable dispose];
-        }];
-    }];
 }
 
 #pragma mark CLLocationManagerDelegate

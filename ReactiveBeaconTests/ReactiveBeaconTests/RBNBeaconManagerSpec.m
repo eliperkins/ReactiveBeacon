@@ -70,19 +70,15 @@ describe(@"RBNBeaconManager", ^{
     
     it(@"should set presence for regions as enter and exit events happen", ^{
         RACSignal *signal = testRegionOne.presence;
+        recorder = signal.testRecorder;
         
-        NSMutableArray *receivedValues = [NSMutableArray array];
-        
-        [signal subscribeNext:^(id x) {
-            [receivedValues addObject:x];
-        }];
-        
+        [manager locationManager:manager.locationManager didDetermineState:CLRegionStateOutside forRegion:testRegionOne];
         [manager locationManager:manager.locationManager didEnterRegion:testRegionOne];
         [manager locationManager:manager.locationManager didExitRegion:testRegionOne];
 
         [scheduler stepAll];
         
-        expect(receivedValues).to.equal(@[ @YES, @NO ]);
+        expect(recorder).to.sendValues(@[ @NO, @YES, @NO ]);
     });
     
     it(@"should send collective presence events for all regions", ^{

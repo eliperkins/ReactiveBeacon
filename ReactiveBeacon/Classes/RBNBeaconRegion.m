@@ -55,7 +55,16 @@
                     // Currently, iOS will not send the initial state for a region
                     // immediately via didEnterRegion or didExitRegion
                     // But, explicitly requesting it will get the initial state
-                    RACSignal *currentSignal = [self.manager fetchPresenceForRegion:self];
+                    RACSignal *currentSignal = [[[[self.manager
+                        rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:)
+                        fromProtocol:@protocol(CLLocationManagerDelegate)]
+                        filter:^BOOL(RACTuple *tuple) {
+                            return [tuple.third isEqual:self];
+                        }]
+                        reduceEach:^(CLLocationManager *manager, NSNumber *state, CLRegion *region) {
+                            return @(state.integerValue == CLRegionStateInside);
+                        }]
+                        take:1];
 
                     RACDisposable *disposable = [[RACSignal
                         merge:@[ currentSignal, entranceSignal, exitSignal ]]
@@ -84,6 +93,7 @@
                     }];
                 }];
                 
+                [self.manager.locationManager requestStateForRegion:self];
                 [self.manager.locationManager startMonitoringForRegion:self];
                 
                 return [[[signal
