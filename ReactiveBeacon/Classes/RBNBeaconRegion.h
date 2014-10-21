@@ -9,6 +9,7 @@
 @import CoreLocation;
 
 @class RACSignal;
+@class RACScheduler;
 @class RBNBeaconManager;
 
 @interface RBNBeaconRegion : CLBeaconRegion

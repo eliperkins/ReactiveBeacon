@@ -15,6 +15,9 @@ describe(@"RBNBeaconManager", ^{
     
     __block RBNBeaconManager *manager;
 
+    __block NSUUID *testRegionOneUUID;
+    __block NSUUID *testRegionTwoUUID;
+    
     __block RBNBeaconRegion *testRegionOne;
     __block RBNBeaconRegion *testRegionTwo;
     
@@ -22,28 +25,42 @@ describe(@"RBNBeaconManager", ^{
     __block id mockBeaconTwo;
     __block id mockLocationManager;
     
+    __block LLSignalTestRecorder *recorder;
+    
+    __block RACTestScheduler *scheduler;
+    
     beforeAll(^{
-        testRegionOne = [[RBNBeaconRegion alloc] initWithProximityUUID:[NSUUID UUID] identifier:@"testRegionOne"];
-        testRegionTwo = [[RBNBeaconRegion alloc] initWithProximityUUID:[NSUUID UUID] identifier:@"testRegionTwo"];
-        
-        mockLocationManager = OCMClassMock(CLLocationManager.class);
-
-        manager = [[RBNBeaconManager alloc] initWithRegions:[NSSet setWithArray:@[ testRegionOne, testRegionTwo ]]
-                                            locationManager:mockLocationManager];
+        testRegionOneUUID = [[NSUUID alloc] initWithUUIDString:@"C20F8CE5-30F0-461A-93FC-B9DF413E517D"];
+        testRegionTwoUUID = [[NSUUID alloc] initWithUUIDString:@"B82E233A-7689-45A5-ADC8-E5D91BA5D1B4"];
         
         mockBeaconOne = OCMClassMock(CLBeacon.class);
-        OCMStub([mockBeaconOne proximityUUID]).andReturn(testRegionOne.proximityUUID);
+        OCMStub([mockBeaconOne proximityUUID]).andReturn(testRegionOneUUID);
         OCMStub([mockBeaconOne major]).andReturn(1);
         OCMStub([mockBeaconOne minor]).andReturn(2);
         OCMStub([mockBeaconOne accuracy]).andReturn(5);
         OCMStub([mockBeaconOne rssi]).andReturn(-70);
 
         mockBeaconTwo = OCMClassMock(CLBeacon.class);
-        OCMStub([mockBeaconTwo proximityUUID]).andReturn(testRegionTwo.proximityUUID);
+        OCMStub([mockBeaconTwo proximityUUID]).andReturn(testRegionTwoUUID);
         OCMStub([mockBeaconTwo major]).andReturn(1);
         OCMStub([mockBeaconTwo minor]).andReturn(2);
         OCMStub([mockBeaconTwo accuracy]).andReturn(5);
         OCMStub([mockBeaconTwo rssi]).andReturn(-70);
+        
+        mockLocationManager = OCMClassMock(CLLocationManager.class);
+        
+        testRegionOne = [[RBNBeaconRegion alloc] initWithProximityUUID:testRegionOneUUID identifier:@"testRegionOne"];
+        testRegionTwo = [[RBNBeaconRegion alloc] initWithProximityUUID:testRegionTwoUUID identifier:@"testRegionTwo"];
+        
+        scheduler = [[RACTestScheduler alloc] init];
+        
+        manager = [[RBNBeaconManager alloc] initWithRegions:[NSSet setWithArray:@[ testRegionOne, testRegionTwo ]]
+                                            locationManager:mockLocationManager
+                                                  scheduler:scheduler]; // Using main queue for tests only
+    });
+    
+    afterEach(^{
+        recorder = nil;
     });
     
     it(@"should assign regions `manager` property to self when init'ed", ^{
@@ -53,22 +70,31 @@ describe(@"RBNBeaconManager", ^{
     
     it(@"should set presence for regions as enter and exit events happen", ^{
         RACSignal *signal = testRegionOne.presence;
-        LLSignalTestRecorder *recorder = signal.testRecorder;
+        
+        NSMutableArray *receivedValues = [NSMutableArray array];
+        
+        [signal subscribeNext:^(id x) {
+            [receivedValues addObject:x];
+        }];
         
         [manager locationManager:manager.locationManager didEnterRegion:testRegionOne];
         [manager locationManager:manager.locationManager didExitRegion:testRegionOne];
+
+        [scheduler stepAll];
         
-        expect(recorder).to.sendValues(@[ @YES, @NO ]);
+        expect(receivedValues).to.equal(@[ @YES, @NO ]);
     });
     
     it(@"should send collective presence events for all regions", ^{
         RACSignal *signal = manager.presenceEvents;
-        LLSignalTestRecorder *recorder = signal.testRecorder;
+        recorder = signal.testRecorder;
         
         [manager locationManager:manager.locationManager didEnterRegion:testRegionOne];
         [manager locationManager:manager.locationManager didExitRegion:testRegionOne];
         [manager locationManager:manager.locationManager didEnterRegion:testRegionTwo];
         [manager locationManager:manager.locationManager didEnterRegion:testRegionOne];
+        
+        [scheduler stepAll];
 
         expect(recorder).to.sendValues(@[ RACTuplePack(testRegionOne, @YES),
                                           RACTuplePack(testRegionOne, @NO),
@@ -78,39 +104,43 @@ describe(@"RBNBeaconManager", ^{
     
     it(@"should range beacons for a specified region", ^{
         RACSignal *signal = testRegionOne.rangedBeacons;
-        LLSignalTestRecorder *recorder = signal.testRecorder;
+        recorder = signal.testRecorder;
 
         NSArray *beacons = @[ mockBeaconOne ];
         [manager locationManager:manager.locationManager didRangeBeacons:beacons inRegion:testRegionOne];
-        
+
+        [scheduler stepAll];
+
         expect(recorder).to.sendValues(@[ beacons ]);
     });
     
     it(@"should not send ranged beacons for another region", ^{
         RACSignal *signal = testRegionOne.rangedBeacons;
-        LLSignalTestRecorder *recorder = signal.testRecorder;
+        recorder = signal.testRecorder;
         
         NSArray *beacons = @[ mockBeaconTwo ];
         [manager locationManager:manager.locationManager didRangeBeacons:beacons inRegion:testRegionTwo];
-        
+
+        [scheduler stepAll];
+
         expect(recorder).to.sendValues(@[ ]);
     });
 
     it(@"should start/stop ranging beacons on subscription/disposal", ^{
         RACSignal *signal = testRegionOne.rangedBeacons;
         
-        [signal startCountingSubscriptions];
-        
         RACDisposable *disposable = [signal subscribeNext:^(id x) {}];
+        RACDisposable *disposableTwo = [signal subscribeNext:^(id x) {}];
+        RACCompoundDisposable *compoundDisposable = [RACCompoundDisposable compoundDisposableWithDisposables:@[disposable, disposableTwo]];
         
         OCMVerify([mockLocationManager startRangingBeaconsInRegion:testRegionOne]);
 
         NSArray *beacons = @[ mockBeaconOne ];
         [manager locationManager:manager.locationManager didRangeBeacons:beacons inRegion:testRegionOne];
         
-        [disposable dispose];
-        
-        [signal stopCountingSubscriptions];
+        [compoundDisposable dispose];
+
+        [scheduler stepAll];
         
         OCMVerify([mockLocationManager stopRangingBeaconsInRegion:testRegionOne]);
     });

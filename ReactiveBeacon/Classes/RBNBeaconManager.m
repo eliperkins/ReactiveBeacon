@@ -18,21 +18,28 @@
 
 - (instancetype)initWithRegions:(NSSet *)regions {
     return [self initWithRegions:regions locationManager:nil];
-    self = [super init];
-    if (self) {
-    }
-    return self;
 }
 
 - (instancetype)initWithRegions:(NSSet *)regions locationManager:(CLLocationManager *)locationManager {
+    return [self initWithRegions:regions locationManager:locationManager scheduler:nil];
+}
+
+- (instancetype)initWithRegions:(NSSet *)regions locationManager:(CLLocationManager *)locationManager scheduler:(RACScheduler *)scheduler {
     self = [super init];
     if (self) {
         if (!locationManager) {
             locationManager = [[CLLocationManager alloc] init];
         }
         
+        if (!scheduler) {
+            dispatch_queue_t queue = dispatch_queue_create("com.eliperkins.RBNBeaconRegion.CoreBluetoothQueue", DISPATCH_QUEUE_SERIAL);
+            scheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.eliperkins.RBNBeaconRegion.CoreBluetoothScheduler" targetQueue:queue];
+        }
+        
         _locationManager = locationManager;
         self.locationManager.delegate = self;
+        
+        _scheduler = scheduler;
         
         RACSubject *subject = [RACSubject subject];
         for (RBNBeaconRegion *region in regions) {
@@ -41,7 +48,7 @@
                 return RACTuplePack(region, presence);
             }] subscribe:subject];
         }
-        _presenceEvents = subject;
+        _presenceEvents = [subject subscribeOn:self.scheduler];
         
 //        _presenceEvents = [[RACSignal
 //            merge:[regions.rac_sequence
