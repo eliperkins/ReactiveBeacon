@@ -20,6 +20,8 @@
 
 @property (readonly, nonatomic, strong) RACSignal *presenceEvents;
 
+@property (readonly, nonatomic, strong) RACSignal *rangedBeacons;
+
 @property (readonly, nonatomic, strong) RACScheduler *scheduler;
 
 - (instancetype)initWithRegions:(NSSet *)regions;

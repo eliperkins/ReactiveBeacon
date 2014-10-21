@@ -41,14 +41,35 @@
         
         _scheduler = scheduler;
         
-        RACSubject *subject = [RACSubject subject];
+        RACSubject *presence = [RACSubject subject];
         for (RBNBeaconRegion *region in regions) {
             region.manager = self;
             [[region.presence map:^(NSNumber *presence) {
                 return RACTuplePack(region, presence);
-            }] subscribe:subject];
+            }] subscribe:presence];
         }
-        _presenceEvents = [subject deliverOn:self.scheduler];
+        _presenceEvents = [presence deliverOn:self.scheduler];
+
+        _rangedBeacons = [[[RACSignal
+            combineLatest:[regions.rac_sequence map:^(RBNBeaconRegion *region) {
+                return [region.rangedBeacons startWith:@[]];
+            }].array]
+            map:^(RACTuple *tuple) {
+                NSMutableArray *array = [NSMutableArray array];
+                for (NSArray *innerArray in tuple.allObjects) {
+                    [array addObjectsFromArray:innerArray];
+                }
+#ifdef DEBUG
+                return [array sortedArrayUsingComparator:^NSComparisonResult(CLBeacon *beacon1, CLBeacon *beacon2) {
+                    return [@(beacon1.accuracy) compare:@(beacon2.accuracy)];
+                }];
+#else
+                NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"accuracy" ascending:YES];
+                return [array sortedArrayUsingDescriptors:@[sort]];
+#endif
+                
+            }]
+            deliverOn:self.scheduler];
     }
     return self;
 }
