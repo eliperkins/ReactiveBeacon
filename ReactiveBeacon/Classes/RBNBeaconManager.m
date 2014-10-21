@@ -60,6 +60,7 @@
                     [array addObjectsFromArray:innerArray];
                 }
 #ifdef DEBUG
+                // Our stubs won't have actual values here, so sorting will not be reliable for key-paths
                 return [array sortedArrayUsingComparator:^NSComparisonResult(CLBeacon *beacon1, CLBeacon *beacon2) {
                     return [@(beacon1.accuracy) compare:@(beacon2.accuracy)];
                 }];
