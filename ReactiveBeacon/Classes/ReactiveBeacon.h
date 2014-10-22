@@ -14,4 +14,5 @@ FOUNDATION_EXPORT double ReactiveBeaconVersionNumber;
 //! Project version string for ReactiveBeacon.
 FOUNDATION_EXPORT const unsigned char ReactiveBeaconVersionString[];
 
-#import <ReactiveBeacon/RBNLocationManager.h>
+#import <ReactiveBeacon/RBNBeaconRegion.h>
+#import <ReactiveBeacon/RBNBeaconManager.h>
