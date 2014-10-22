@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ReactiveBeacon"
-  s.version      = "0.2.0"
+  s.version      = "0.3.0"
   s.summary      = "ReactiveCocoa bindings for iBeacon related activities"
   s.description  = <<-DESC
                    ReactiveCocoa bindings for iBeacon related activities, mainly for finding iBeacons nearby as a signal.
