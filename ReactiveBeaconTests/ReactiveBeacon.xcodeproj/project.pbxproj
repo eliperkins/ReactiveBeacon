@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2DC276DC19F18B7D00A38831 /* RBNBeaconManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC276DB19F18B7D00A38831 /* RBNBeaconManagerSpec.m */; };
-		2DCF9D521986EC9000606D17 /* ReactiveBeaconTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */; };
 		670FDA41FBB64449B176E748 /* libPods-ReactiveBeaconTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF5A20779F1B4BF08604E48E /* libPods-ReactiveBeaconTests.a */; };
 /* End PBXBuildFile section */
 
@@ -16,7 +15,6 @@
 		2DC276DB19F18B7D00A38831 /* RBNBeaconManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBNBeaconManagerSpec.m; sourceTree = "<group>"; };
 		2DCF9D4B1986EC9000606D17 /* ReactiveBeaconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBeaconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCF9D501986EC9000606D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBeaconTests.m; sourceTree = "<group>"; };
 		2DEC129C1986F2BF00D69D3B /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		B855A9E3EE644896B5A1B3F1 /* libPods-ReactiveBeacon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveBeacon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14DF51A65EB647523F93B01 /* Pods-ReactiveBeaconTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveBeaconTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReactiveBeaconTests/Pods-ReactiveBeaconTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 		2DCF9D4E1986EC9000606D17 /* ReactiveBeaconTests */ = {
 			isa = PBXGroup;
 			children = (
-				2DCF9D511986EC9000606D17 /* ReactiveBeaconTests.m */,
 				2DCF9D4F1986EC9000606D17 /* Supporting Files */,
 				2DC276DB19F18B7D00A38831 /* RBNBeaconManagerSpec.m */,
 			);
@@ -193,7 +190,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCF9D521986EC9000606D17 /* ReactiveBeaconTests.m in Sources */,
 				2DC276DC19F18B7D00A38831 /* RBNBeaconManagerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
