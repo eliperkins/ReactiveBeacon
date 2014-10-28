@@ -36,7 +36,7 @@
                         }]
                         filter:^BOOL(CLRegion *enteredRegion) {
                             @strongify(self);
-                            return [enteredRegion isEqual:self];
+                            return [self isEqualToRegion:enteredRegion];
                         }]
                         mapReplace:@YES];
 
@@ -48,7 +48,7 @@
                         }]
                         filter:^BOOL(CLRegion *exitedRegion) {
                             @strongify(self);
-                            return [exitedRegion isEqual:self];
+                            return [self isEqualToRegion:exitedRegion];
                         }]
                         mapReplace:@NO];
 
@@ -59,7 +59,8 @@
                         rac_signalForSelector:@selector(locationManager:didDetermineState:forRegion:)
                         fromProtocol:@protocol(CLLocationManagerDelegate)]
                         filter:^BOOL(RACTuple *tuple) {
-                            return [tuple.third isEqual:self];
+                            @strongify(self);
+                            return [self isEqualToRegion:tuple.third];
                         }]
                         reduceEach:^(CLLocationManager *manager, NSNumber *state, CLRegion *region) {
                             return @(state.integerValue == CLRegionStateInside);
@@ -76,7 +77,7 @@
                         fromProtocol:@protocol(CLLocationManagerDelegate)]
                         filter:^BOOL(RACTuple *tuple) {
                             @strongify(self);
-                            return [tuple.second isEqual:self];
+                            return [self isEqualToRegion:tuple.second];
                         }]
                         subscribeNext:^(RACTuple *tuple) {
                             [subscriber sendError:tuple.third];
@@ -111,7 +112,7 @@
                         fromProtocol:@protocol(CLLocationManagerDelegate)]
                         filter:^BOOL(RACTuple *tuple) {
                             @strongify(self);
-                            return [tuple.third isEqual:self];
+                            return [self isEqualToRegion:tuple.third];
                         }]
                         reduceEach:^(CLLocationManager *manager, NSArray *beacons, CLBeaconRegion *region) {
                             return beacons;
@@ -139,6 +140,25 @@
             setNameWithFormat:@"-rangedBeacons proximityUUID: %@ identifier: %@", proximityUUID, identifier];
     }
     return self;
+}
+
+- (BOOL)isEqualToRegion:(CLRegion *)region {
+    if (region == self) {
+        return YES;
+    }
+    
+    if (!region || ![region isKindOfClass:CLRegion.class]) {
+        return NO;
+    }
+    
+    if ([region isKindOfClass:CLBeaconRegion.class]) {
+        CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
+        BOOL haveEqualUUID = (!self.proximityUUID && !beaconRegion.proximityUUID) || [self.proximityUUID isEqual:beaconRegion.proximityUUID];
+        BOOL haveEqualIdentifier = (!self.identifier && !beaconRegion.identifier) || [self.identifier isEqual:beaconRegion.identifier];
+        return haveEqualUUID && haveEqualIdentifier;
+    }
+    
+    return NO;
 }
 
 @end
