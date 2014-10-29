@@ -3,16 +3,18 @@ cache:
   - bundler
   - cocoapods
 xcode_sdk: iphonesimulator
-xcode_workspace: ReactiveBeacon.xcworkspace
-xcode_scheme: ReactiveBeaconTests
+xcode_workspace: Example/ReactiveBeacon.xcworkspace
+xcode_scheme: ReactiveBeacon
 before_script:
   - export LANG=en_US.UTF-8
-  - brew update
-  - brew unlink xctool
-  - brew install xctool
   - gem i cocoapods -v 0.34.4 --no-ri --no-rdoc
   - gem i slather --no-ri --no-rdoc
+  - gem i xcpretty --no-ri --no-rdoc
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
 script:
-  - xctool -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -sdk iphonesimulator test
+- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -showBuildSettings test | grep -m 1 "CONFIGURATION_BUILD_DIR" | grep -oEi "\/.*"
+- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -showBuildSettings test | grep -m 1 "OBJROOT" | grep -oEi "\/.*"
+- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -showBuildSettings test | grep -m 1 "SYMROOT" | grep -oEi "\/.*"
+- printenv
+- set -o pipefail && xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme 'ReactiveBeaconTests' -sdk iphonesimulator CONFIGURATION_BUILD_DIR='OUTPUT_DIRECTORY' test | xcpretty -c
 after_success: slather
