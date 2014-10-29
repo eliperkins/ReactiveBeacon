@@ -4,7 +4,7 @@ xcode_workspace: Example/ReactiveBeacon.xcworkspace
 xcode_scheme: ReactiveBeacon
 before_script:
   - export LANG=en_US.UTF-8
-  - gem i cocoapods -v 0.34.2 --no-ri --no-rdoc
+  - gem i cocoapods -v 0.34.4 --no-ri --no-rdoc
   - gem i slather --no-ri --no-rdoc
   - gem i xcpretty --no-ri --no-rdoc
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
