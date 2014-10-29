@@ -21,3 +21,5 @@ DerivedData
 *.xcuserstate
 
 Pods/
+ReactiveBeaconTests/Pods
+ReactiveBeaconTests/Podfile.lock
