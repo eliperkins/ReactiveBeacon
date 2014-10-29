@@ -10,4 +10,6 @@ before_script:
   - gem i cocoapods -v 0.34.4 --no-ri --no-rdoc
   - gem i slather --no-ri --no-rdoc
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
+script:
+  - xctool -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -sdk iphonesimulator test
 after_success: slather
