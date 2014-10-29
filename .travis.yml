@@ -12,5 +12,6 @@ before_script:
   - gem i xcpretty --no-ri --no-rdoc
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
 script:
+- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -showBuildSettings test | grep -m 1 "CONFIGURATION_BUILD_DIR" | grep -oEi "\/.*"
 - set -o pipefail && xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme 'ReactiveBeaconTests' -sdk iphonesimulator CONFIGURATION_BUILD_DIR='OUTPUT_DIRECTORY' test | xcpretty -c
 after_success: slather
