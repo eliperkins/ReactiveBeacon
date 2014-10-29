@@ -13,5 +13,8 @@ before_script:
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
 script:
 - xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -showBuildSettings test | grep -m 1 "CONFIGURATION_BUILD_DIR" | grep -oEi "\/.*"
+- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -showBuildSettings test | grep -m 1 "OBJROOT" | grep -oEi "\/.*"
+- xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme ReactiveBeaconTests -showBuildSettings test | grep -m 1 "SYMROOT" | grep -oEi "\/.*"
+- printenv
 - set -o pipefail && xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme 'ReactiveBeaconTests' -sdk iphonesimulator CONFIGURATION_BUILD_DIR='OUTPUT_DIRECTORY' test | xcpretty -c
 after_success: slather
