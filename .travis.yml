@@ -1,4 +1,7 @@
 language: objective-c
+cache:
+  - bundler
+  - cocoapods
 xcode_sdk: iphonesimulator
 xcode_workspace: Example/ReactiveBeacon.xcworkspace
 xcode_scheme: ReactiveBeacon
