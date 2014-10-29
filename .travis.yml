@@ -7,6 +7,9 @@ xcode_workspace: ReactiveBeacon.xcworkspace
 xcode_scheme: ReactiveBeaconTests
 before_script:
   - export LANG=en_US.UTF-8
+  - brew update
+  - brew unlink xctool
+  - brew install xctool
   - gem i cocoapods -v 0.34.4 --no-ri --no-rdoc
   - gem i slather --no-ri --no-rdoc
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
