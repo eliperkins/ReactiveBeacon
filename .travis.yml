@@ -3,14 +3,11 @@ cache:
   - bundler
   - cocoapods
 xcode_sdk: iphonesimulator
-xcode_workspace: Example/ReactiveBeacon.xcworkspace
-xcode_scheme: ReactiveBeacon
+xcode_workspace: ReactiveBeacon.xcworkspace
+xcode_scheme: ReactiveBeaconTests
 before_script:
   - export LANG=en_US.UTF-8
   - gem i cocoapods -v 0.34.4 --no-ri --no-rdoc
   - gem i slather --no-ri --no-rdoc
-  - gem i xcpretty --no-ri --no-rdoc
   - cd ReactiveBeaconTests && pod install && cd $TRAVIS_BUILD_DIR
-script:
-- set -o pipefail && xcodebuild -workspace ReactiveBeacon.xcworkspace -scheme 'ReactiveBeaconTests' -sdk iphonesimulator test | xcpretty -c
 after_success: slather
