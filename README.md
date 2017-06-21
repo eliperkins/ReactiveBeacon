@@ -1,3 +1,6 @@
+# :warning: _This project will no longer be maintained and is deprecated!_ :warning:
+
+
 # ReactiveBeacon
 [![Build Status](http://img.shields.io/travis/eliperkins/ReactiveBeacon.svg?style=flat)](https://travis-ci.org/eliperkins/ReactiveBeacon)
 [![Coverage](http://img.shields.io/coveralls/eliperkins/ReactiveBeacon.svg?style=flat)](https://coveralls.io/r/eliperkins/ReactiveBeacon?branch=master)
